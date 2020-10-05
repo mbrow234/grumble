@@ -12,12 +12,27 @@ public class AddressMapper {
 
     public Address mapEntityToAddress(com.grumble.entities.Address addressEntity) {
         Address address = new Address();
+
         address.setId(addressEntity.getId());
         address.setStreetName(addressEntity.getStreetName());
         address.setCity(addressEntity.getCity());
         address.setState(addressEntity.getState());
         address.setCountry(addressEntity.getCountry());
         address.setZipCode(addressEntity.getZipCode());
+
         return address;
     }
+
+    public com.grumble.entities.Address mapAddressToEntity(Address address) {
+        com.grumble.entities.Address addressEntity = new com.grumble.entities.Address();
+
+        addressEntity.setStreetName(address.getStreetName());
+        addressEntity.setCity(address.getCity());
+        addressEntity.setState(address.getState());
+        addressEntity.setZipCode(address.getZipCode());
+        addressEntity.setCountry(address.getCountry());
+
+        return addressEntity;
+    }
+
 }

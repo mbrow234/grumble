@@ -25,7 +25,7 @@ public class UserService {
 
     public User getUserById(Long id) {
         Optional<com.grumble.entities.User> userEntity = userRepository.findById(id);
-        User user = null;
+        User user;
         if (userEntity.isPresent()) {
             user = userMapper.mapEntityToUser(userEntity.get());
         } else {
@@ -37,9 +37,9 @@ public class UserService {
     }
 
     public User createUser(User userToSave) {
-        //TODO save user to mysql database
+        com.grumble.entities.User savedUser = userRepository.save(userMapper.mapUserToEntity(userToSave));
 
-        return userToSave;
+        return userMapper.mapEntityToUser(savedUser);
     }
 
     public Long deleteUserById(Long id) {

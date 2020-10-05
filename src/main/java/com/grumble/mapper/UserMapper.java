@@ -16,12 +16,25 @@ public class UserMapper {
 
     public User mapEntityToUser(com.grumble.entities.User userEntity) {
         User user = new User();
+
         user.setId(userEntity.getId());
         user.setFirstName(userEntity.getFirstName());
         user.setLastName(userEntity.getLastName());
         user.setAddress(addressMapper.mapEntityToAddress(userEntity.getAddress()));
         user.setUserSince(userEntity.getUserSince());
+
         return user;
+    }
+
+    public com.grumble.entities.User mapUserToEntity(User user) {
+        com.grumble.entities.User userEntity = new com.grumble.entities.User();
+
+        userEntity.setFirstName(user.getFirstName());
+        userEntity.setLastName(user.getLastName());
+        userEntity.setUserSince(user.getUserSince());
+        userEntity.setAddress(addressMapper.mapAddressToEntity(user.getAddress()));
+
+        return userEntity;
     }
 
 }
