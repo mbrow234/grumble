@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Slf4j
 @Service
 public class ListingService {
@@ -21,12 +23,25 @@ public class ListingService {
     }
 
     public Listing getListingById(Long id) {
+        Optional<com.grumble.entities.Listing> listingEntity = listingRepository.findById(id);
 
-        return new Listing();
+        Listing listing;
+        if (listingEntity.isPresent()) {
+            listing = listingMapper.mapEntityToListing(listingEntity.get());
+        } else {
+            return null;
+        }
+
+        return listing;
     }
 
     public Long deleteListingById(Long id) {
-        //TODO: delete listing from mysql database and reutrn id of deleted listing
+
+        try {
+            listingRepository.deleteById(id);
+        } catch (Exception e) {
+            return null;
+        }
 
         return id;
     }
