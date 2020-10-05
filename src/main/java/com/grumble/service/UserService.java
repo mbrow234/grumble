@@ -1,7 +1,6 @@
 package com.grumble.service;
 
 import com.grumble.mapper.UserMapper;
-import com.grumble.model.Address;
 import com.grumble.model.User;
 import com.grumble.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -55,6 +54,12 @@ public class UserService {
         }
 
         return id;
+    }
+
+    public User updateUser(User userUpdated) {
+        User user = userMapper.mapEntityToUser(userRepository.save(userMapper.mapUserToEntity(userUpdated)));
+
+        return user;
     }
 
 }

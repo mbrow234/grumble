@@ -60,4 +60,18 @@ public class UserController {
 
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
+    @PutMapping("user")
+    public ResponseEntity<User> updateUser(@RequestBody User userToUpdate) {
+        log.info("REST Resource called - updateUser");
+
+        User user = userService.updateUser(userToUpdate);
+
+        if (null == user) {
+            log.error("Failed to update user.");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
 }
