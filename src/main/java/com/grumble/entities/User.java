@@ -1,24 +1,28 @@
-package com.grumble.model;
+package com.grumble.entities;
 
-import java.util.List;
+import javax.persistence.*;
 
+@Entity(name = "User")
+@Table(name = "users")
 public class User {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name ="first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "user_since")
     private String userSince;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
-
-    public User() {
-
-    }
-
-    public User(String firstName, String lastName, String userSince, Address address) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.userSince = userSince;
-        this.address = address;
-    }
 
     public Long getId() {
         return id;
@@ -54,9 +58,5 @@ public class User {
 
     public Address getAddress() {
         return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
     }
 }

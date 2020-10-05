@@ -29,7 +29,7 @@ public class ListingService {
                 .withPetAge(new PetAgeBuilder().withYears(2).withMonths(11).build())
                 .withPrice(1000000.00)
                 .withDaysOnGrumble(1)
-                .withListingOwner(new User("Zoey", "Brown", "10-5-2020", new Address("11122 South 3452 West", "HappyVille", "84897", "UT", "USA"), null))
+                .withListingOwner(new User("Zoey", "Brown", "10-5-2020", new Address("11122 South 3452 West", "HappyVille", "84897", "UT", "USA")))
                 .withListingType(ListingType.BREEDING_PARTNER)
                 .build();
     }
