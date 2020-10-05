@@ -1,12 +1,26 @@
-package com.grumble.model;
+package com.grumble.entities;
 
 import com.grumble.common.AnimalType;
 
+import javax.persistence.*;
+
+@Entity(name = "Pet")
+@Table(name = "pet")
 public class Pet {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "name")
     private String petName;
+
+    @Column(name = "birthday")
     private String birthDay;
+
+    @Column(name = "animal_type")
+    @Enumerated(EnumType.STRING)
     private AnimalType animalType;
 
     public Long getId() {

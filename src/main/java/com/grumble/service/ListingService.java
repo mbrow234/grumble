@@ -1,37 +1,28 @@
 package com.grumble.service;
 
-import com.grumble.common.AnimalType;
-import com.grumble.common.ListingType;
-import com.grumble.model.Address;
+import com.grumble.mapper.ListingMapper;
 import com.grumble.model.Listing;
-import com.grumble.model.User;
-import com.grumble.model.builder.ListingBuilder;
-import com.grumble.model.builder.PetAgeBuilder;
+import com.grumble.repository.ListingRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
 public class ListingService {
 
-    //...
+    private ListingRepository listingRepository;
+    private ListingMapper listingMapper;
 
-    public ListingService() {
-        //...
+    @Autowired
+    public ListingService(ListingRepository listingRepository, ListingMapper listingMapper) {
+        this.listingRepository = listingRepository;
+        this.listingMapper = listingMapper;
     }
 
     public Listing getListingById(Long id) {
-        //TODO: get listing from mysql database and return it
-        //fake listing for now
-        return new ListingBuilder()
-                .withPetName("Zoey")
-                .withAnimalType(AnimalType.DOG)
-                .withPetAge(new PetAgeBuilder().withYears(2).withMonths(11).build())
-                .withPrice(1000000.00)
-                .withDaysOnGrumble(1)
-                .withListingOwner(new User("Zoey", "Brown", "10-5-2020", new Address("11122 South 3452 West", "HappyVille", "84897", "UT", "USA")))
-                .withListingType(ListingType.BREEDING_PARTNER)
-                .build();
+
+        return new Listing();
     }
 
     public Long deleteListingById(Long id) {
@@ -41,8 +32,7 @@ public class ListingService {
     }
 
     public Listing createListing(Listing listing) {
-        //TODO: save listing database
-        return listing;
+        return listingMapper.mapEntityToListing(listingRepository.save(listingMapper.mapListingToEntity(listing)));
     }
 
 }
