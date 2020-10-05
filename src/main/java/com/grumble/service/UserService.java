@@ -29,7 +29,6 @@ public class UserService {
         if (userEntity.isPresent()) {
             user = userMapper.mapEntityToUser(userEntity.get());
         } else {
-            //TODO throw some error
             return null;
         }
 
@@ -37,13 +36,23 @@ public class UserService {
     }
 
     public User createUser(User userToSave) {
-        com.grumble.entities.User savedUser = userRepository.save(userMapper.mapUserToEntity(userToSave));
+        com.grumble.entities.User savedUser;
+
+        try {
+            savedUser = userRepository.save(userMapper.mapUserToEntity(userToSave));
+        } catch (Exception e) {
+            return null;
+        }
 
         return userMapper.mapEntityToUser(savedUser);
     }
 
     public Long deleteUserById(Long id) {
-        //TODO: delete user from mysql database and return the id of the one deleted
+        try {
+            userRepository.deleteById(id);
+        } catch (Exception e) {
+            return null;
+        }
 
         return id;
     }

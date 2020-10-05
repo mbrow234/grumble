@@ -26,6 +26,7 @@ public class AddressMapper {
     public com.grumble.entities.Address mapAddressToEntity(Address address) {
         com.grumble.entities.Address addressEntity = new com.grumble.entities.Address();
 
+        addressEntity.setId(address.getId());
         addressEntity.setStreetName(address.getStreetName());
         addressEntity.setCity(address.getCity());
         addressEntity.setState(address.getState());

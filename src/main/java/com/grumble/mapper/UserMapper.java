@@ -29,6 +29,7 @@ public class UserMapper {
     public com.grumble.entities.User mapUserToEntity(User user) {
         com.grumble.entities.User userEntity = new com.grumble.entities.User();
 
+        userEntity.setId(user.getId());
         userEntity.setFirstName(user.getFirstName());
         userEntity.setLastName(user.getLastName());
         userEntity.setUserSince(user.getUserSince());
