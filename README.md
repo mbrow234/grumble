@@ -22,6 +22,7 @@ In Terminal:
 TODO
 ----
 Finish creating services, controllers, repositories and db schema/tables
+api for saving entities in list and getting all entities in list ect
 Put robust endpoints in each controller to allow for fine control over data
 Create some sort of front end app - Angular or React, either with Typescript
 Put some security and Auth in to endpoints. Authorized users.
