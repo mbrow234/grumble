@@ -7,7 +7,10 @@ import com.grumble.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
+@Transactional
 public class AddressServiceImpl implements AddressService {
 
     private AddressRepository addressRepository;
