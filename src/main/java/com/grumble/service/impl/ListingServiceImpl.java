@@ -1,7 +1,8 @@
 package com.grumble.service.impl;
 
+import com.grumble.entities.Listing;
 import com.grumble.mapper.ListingMapper;
-import com.grumble.model.Listing;
+import com.grumble.dto.ListingDto;
 import com.grumble.repository.ListingRepository;
 import com.grumble.service.ListingService;
 import lombok.extern.slf4j.Slf4j;
@@ -23,17 +24,17 @@ public class ListingServiceImpl implements ListingService {
         this.listingMapper = listingMapper;
     }
 
-    public Listing getListingById(Long id) {
-        Optional<com.grumble.entities.Listing> listingEntity = listingRepository.findById(id);
+    public ListingDto getListingById(Long id) {
+        Optional<Listing> listingEntity = listingRepository.findById(id);
 
-        Listing listing;
+        ListingDto listingDto;
         if (listingEntity.isPresent()) {
-            listing = listingMapper.mapEntityToListing(listingEntity.get());
+            listingDto = listingMapper.mapEntityToListing(listingEntity.get());
         } else {
             return null;
         }
 
-        return listing;
+        return listingDto;
     }
 
     public Long deleteListingById(Long id) {
@@ -47,8 +48,8 @@ public class ListingServiceImpl implements ListingService {
         return id;
     }
 
-    public Listing createListing(Listing listing) {
-        return listingMapper.mapEntityToListing(listingRepository.save(listingMapper.mapListingToEntity(listing)));
+    public ListingDto createListing(ListingDto listingDto) {
+        return listingMapper.mapEntityToListing(listingRepository.save(listingMapper.mapListingToEntity(listingDto)));
     }
 
 }

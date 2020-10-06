@@ -1,21 +1,21 @@
-package com.grumble.model;
+package com.grumble.dto;
 
-public class User {
+public class UserDto {
     private Long id;
     private String firstName;
     private String lastName;
     private String userSince;
-    private Address address;
+    private AddressDto addressDto;
 
-    public User() {
+    public UserDto() {
 
     }
 
-    public User(String firstName, String lastName, String userSince, Address address) {
+    public UserDto(String firstName, String lastName, String userSince, AddressDto addressDto) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userSince = userSince;
-        this.address = address;
+        this.addressDto = addressDto;
     }
 
     public Long getId() {
@@ -50,11 +50,11 @@ public class User {
         this.userSince = userSince;
     }
 
-    public Address getAddress() {
-        return address;
+    public AddressDto getAddressDto() {
+        return addressDto;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setAddressDto(AddressDto addressDto) {
+        this.addressDto = addressDto;
     }
 }

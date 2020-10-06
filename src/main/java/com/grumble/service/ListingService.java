@@ -1,11 +1,11 @@
 package com.grumble.service;
 
-import com.grumble.model.Listing;
+import com.grumble.dto.ListingDto;
 
 public interface ListingService {
 
-    Listing getListingById(Long id);
+    ListingDto getListingById(Long id);
     Long deleteListingById(Long id);
-    Listing createListing(Listing listing);
+    ListingDto createListing(ListingDto listingDto);
 
 }

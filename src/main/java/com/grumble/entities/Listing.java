@@ -13,7 +13,7 @@ public class Listing {
     @Column(name = "id")
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "pet_id", referencedColumnName = "id")
     private Pet pet;
 

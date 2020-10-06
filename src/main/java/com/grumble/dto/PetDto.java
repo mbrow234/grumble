@@ -1,8 +1,8 @@
-package com.grumble.model;
+package com.grumble.dto;
 
 import com.grumble.common.AnimalType;
 
-public class Pet {
+public class PetDto {
 
     private Long id;
     private String petName;

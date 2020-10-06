@@ -1,6 +1,6 @@
 package com.grumble.controller;
 
-import com.grumble.model.Listing;
+import com.grumble.dto.ListingDto;
 import com.grumble.service.ListingService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,17 +19,17 @@ public class ListingController {
     }
 
     @GetMapping("listing/{id}")
-    public ResponseEntity<Listing> getListingById(@PathVariable Long id) {
-        log.info("REST Resource called (listing) - getListingById: {}", id);
+    public ResponseEntity<ListingDto> getListingById(@PathVariable Long id) {
+        log.info("REST Resource called (listingDto) - getListingById: {}", id);
 
-        Listing listing = listingService.getListingById(id);
+        ListingDto listingDto = listingService.getListingById(id);
 
-        if (null == listing) {
-            log.error("Failed to get listing by id: {}", id);
+        if (null == listingDto) {
+            log.error("Failed to get listingDto by id: {}", id);
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<>(listing, HttpStatus.OK);
+        return new ResponseEntity<>(listingDto, HttpStatus.OK);
     }
 
     @DeleteMapping("listing/{id}")
@@ -47,17 +47,17 @@ public class ListingController {
     }
 
     @PostMapping("listing")
-    public ResponseEntity<Listing> createListing(@RequestBody Listing listing) {
-        log.info("REST Resource called (listing) - createListing");
+    public ResponseEntity<ListingDto> createListing(@RequestBody ListingDto listingDto) {
+        log.info("REST Resource called (listingDto) - createListing");
 
-        Listing retListing = listingService.createListing(listing);
+        ListingDto retListingDto = listingService.createListing(listingDto);
 
-        if (null == retListing) {
-            log.error("Failed to create listing");
+        if (null == retListingDto) {
+            log.error("Failed to create listingDto");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
 
-        return new ResponseEntity<>(retListing, HttpStatus.OK);
+        return new ResponseEntity<>(retListingDto, HttpStatus.OK);
     }
 
 }

@@ -1,7 +1,7 @@
 package com.grumble.service.impl;
 
 import com.grumble.mapper.AddressMapper;
-import com.grumble.model.Address;
+import com.grumble.dto.AddressDto;
 import com.grumble.repository.AddressRepository;
 import com.grumble.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class AddressServiceImpl implements AddressService {
         this.addressMapper = addressMapper;
     }
 
-    public Address updateAddress(Address addressUpdated) {
-        return addressMapper.mapEntityToAddress(addressRepository.save(addressMapper.mapAddressToEntity(addressUpdated)));
+    public AddressDto updateAddress(AddressDto addressDtoUpdated) {
+        return addressMapper.mapEntityToAddress(addressRepository.save(addressMapper.mapAddressToEntity(addressDtoUpdated)));
     }
 }

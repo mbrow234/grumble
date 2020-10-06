@@ -1,7 +1,7 @@
 package com.grumble.service;
 
-import com.grumble.model.Address;
+import com.grumble.dto.AddressDto;
 
 public interface AddressService {
-    Address updateAddress(Address address);
+    AddressDto updateAddress(AddressDto addressDto);
 }

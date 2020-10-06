@@ -26,5 +26,5 @@ api for saving entities in list and getting all entities in list ect
 Put robust endpoints in each controller to allow for fine control over data
 Create some sort of front end app - Angular or React, either with Typescript
 Put some security and Auth in to endpoints. Authorized users.
-Create services for pet watching, pet walking, pet hospital finder/reviews.
-Create ability for user to have profile for offering services like sitting, watching or training. Users are verified and registered to be able to offer such. What makes someone real and trustworthy?
+Create services for petDto watching, petDto walking, petDto hospital finder/reviews.
+Create ability for userDto to have profile for offering services like sitting, watching or training. Users are verified and registered to be able to offer such. What makes someone real and trustworthy?

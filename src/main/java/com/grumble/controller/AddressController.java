@@ -1,6 +1,6 @@
 package com.grumble.controller;
 
-import com.grumble.model.Address;
+import com.grumble.dto.AddressDto;
 import com.grumble.service.AddressService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -20,16 +20,16 @@ public class AddressController {
     }
 
     @PutMapping("address")
-    public ResponseEntity<Address> updateAddress(@RequestBody Address addressUpdated) {
+    public ResponseEntity<AddressDto> updateAddress(@RequestBody AddressDto addressDtoUpdated) {
         log.info("REST Resource called - updateAddress");
 
-        Address address = addressService.updateAddress(addressUpdated);
-        if (null == address) {
-            log.error("Failed to update address.");
+        AddressDto addressDto = addressService.updateAddress(addressDtoUpdated);
+        if (null == addressDto) {
+            log.error("Failed to update addressDto.");
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
 
-        return new ResponseEntity<>(address, HttpStatus.OK);
+        return new ResponseEntity<>(addressDto, HttpStatus.OK);
     }
 
 }

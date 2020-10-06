@@ -1,10 +1,10 @@
 package com.grumble.service;
 
-import com.grumble.model.User;
+import com.grumble.dto.UserDto;
 
 public interface UserService {
-    User getUserById(Long id);
-    User createUser(User userToSave);
+    UserDto getUserById(Long id);
+    UserDto createUser(UserDto userDtoToSave);
     Long deleteUserById(Long id);
-    User updateUser(User userUpdated);
+    UserDto updateUser(UserDto userDtoUpdated);
 }

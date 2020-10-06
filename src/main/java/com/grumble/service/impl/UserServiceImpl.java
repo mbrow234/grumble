@@ -1,7 +1,8 @@
 package com.grumble.service.impl;
 
+import com.grumble.entities.User;
 import com.grumble.mapper.UserMapper;
-import com.grumble.model.User;
+import com.grumble.dto.UserDto;
 import com.grumble.repository.UserRepository;
 import com.grumble.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -23,23 +24,23 @@ public class UserServiceImpl implements UserService {
         this.userMapper = userMapper;
     }
 
-    public User getUserById(Long id) {
-        Optional<com.grumble.entities.User> userEntity = userRepository.findById(id);
-        User user;
+    public UserDto getUserById(Long id) {
+        Optional<User> userEntity = userRepository.findById(id);
+        UserDto userDto;
         if (userEntity.isPresent()) {
-            user = userMapper.mapEntityToUser(userEntity.get());
+            userDto = userMapper.mapEntityToUser(userEntity.get());
         } else {
             return null;
         }
 
-        return user;
+        return userDto;
     }
 
-    public User createUser(User userToSave) {
-        com.grumble.entities.User savedUser;
+    public UserDto createUser(UserDto userDtoToSave) {
+        User savedUser;
 
         try {
-            savedUser = userRepository.save(userMapper.mapUserToEntity(userToSave));
+            savedUser = userRepository.save(userMapper.mapUserToEntity(userDtoToSave));
         } catch (Exception e) {
             return null;
         }
@@ -57,10 +58,10 @@ public class UserServiceImpl implements UserService {
         return id;
     }
 
-    public User updateUser(User userUpdated) {
-        User user = userMapper.mapEntityToUser(userRepository.save(userMapper.mapUserToEntity(userUpdated)));
+    public UserDto updateUser(UserDto userDtoUpdated) {
+        UserDto userDto = userMapper.mapEntityToUser(userRepository.save(userMapper.mapUserToEntity(userDtoUpdated)));
 
-        return user;
+        return userDto;
     }
 
 }

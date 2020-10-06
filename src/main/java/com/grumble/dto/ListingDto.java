@@ -1,13 +1,13 @@
-package com.grumble.model;
+package com.grumble.dto;
 
 import com.grumble.common.ListingType;
 
-public class Listing {
+public class ListingDto {
 
     private Long id;
-    private Pet pet;
+    private PetDto petDto;
     private double price;
-    private User listingOwner;
+    private UserDto listingOwner;
     private int daysOnGrumble;
     private ListingType listingType;
 
@@ -19,12 +19,12 @@ public class Listing {
         this.id = id;
     }
 
-    public Pet getPet() {
-        return pet;
+    public PetDto getPetDto() {
+        return petDto;
     }
 
-    public void setPet(Pet pet) {
-        this.pet = pet;
+    public void setPetDto(PetDto petDto) {
+        this.petDto = petDto;
     }
 
     public ListingType getListingType() {
@@ -43,11 +43,11 @@ public class Listing {
         this.price = price;
     }
 
-    public User getListingOwner() {
+    public UserDto getListingOwner() {
         return listingOwner;
     }
 
-    public void setListingOwner(User listingOwner) {
+    public void setListingOwner(UserDto listingOwner) {
         this.listingOwner = listingOwner;
     }
 

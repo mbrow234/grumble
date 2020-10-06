@@ -1,6 +1,6 @@
-package com.grumble.model;
+package com.grumble.dto;
 
-public class Address {
+public class AddressDto {
     private Long id;
     private String streetName;
     private String city;
@@ -8,11 +8,11 @@ public class Address {
     private String state;
     private String country;
 
-    public Address() {
+    public AddressDto() {
 
     }
 
-    public Address(String streetName, String city, String zipCode, String state, String country) {
+    public AddressDto(String streetName, String city, String zipCode, String state, String country) {
         this.streetName = streetName;
         this.city = city;
         this.zipCode = zipCode;
