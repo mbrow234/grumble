@@ -6,7 +6,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -31,6 +34,19 @@ public class UserController {
         }
 
         return new ResponseEntity<>(userDto, HttpStatus.OK);
+    }
+
+    @GetMapping("user")
+    public ResponseEntity<List<UserDto>> getAllUsers() {
+        log.info("REST Resource called - getAllUsers");
+
+        List<UserDto> userDtos = userService.getAllUsers();
+        if (CollectionUtils.isEmpty(userDtos)) {
+            log.error("Failed to get all users or there were none.");
+            return new ResponseEntity<>(userDtos, HttpStatus.GONE);
+        }
+
+        return new ResponseEntity<>(userDtos, HttpStatus.OK);
     }
 
     @DeleteMapping("user/{id}")

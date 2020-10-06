@@ -41,7 +41,6 @@ public class UserServiceImpl implements UserService {
     public List<UserDto> getAllUsers() {
         List<UserDto> userDtos = new ArrayList<>();
         userRepository.findAll().forEach(user -> userDtos.add(userMapper.mapEntityToUser(user)));
-
         return userDtos;
     }
 
