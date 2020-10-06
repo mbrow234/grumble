@@ -6,7 +6,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -25,11 +28,24 @@ public class ListingController {
         ListingDto listingDto = listingService.getListingById(id);
 
         if (null == listingDto) {
-            log.error("Failed to get listingDto by id: {}", id);
+            log.warn("Failed to get listingDto by id: {}", id);
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
 
         return new ResponseEntity<>(listingDto, HttpStatus.OK);
+    }
+
+    @GetMapping("listing")
+    public ResponseEntity<List<ListingDto>> getAllListings() {
+        log.info("REST Resource called - getAllListings");
+
+        List<ListingDto> listingDtos = listingService.getAllListings();
+        if (CollectionUtils.isEmpty(listingDtos)) {
+            log.warn("Unable to find all listings.");
+            return new ResponseEntity<>(listingDtos, HttpStatus.GONE);
+        }
+
+        return new ResponseEntity<>(listingDtos, HttpStatus.OK);
     }
 
     @DeleteMapping("listing/{id}")
@@ -39,7 +55,7 @@ public class ListingController {
         Long listingId = listingService.deleteListingById(id);
 
         if (null == listingId) {
-            log.error("Unable to delete listing by id: {}", id);
+            log.warn("Unable to delete listing by id: {}", id);
             return new ResponseEntity<>(id, HttpStatus.GONE);
         }
 
@@ -59,5 +75,7 @@ public class ListingController {
 
         return new ResponseEntity<>(retListingDto, HttpStatus.OK);
     }
+
+    //TODO: implemnt PUT
 
 }

@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -35,6 +37,12 @@ public class ListingServiceImpl implements ListingService {
         }
 
         return listingDto;
+    }
+
+    public List<ListingDto> getAllListings() {
+        List<ListingDto> listingDtos = new ArrayList<>();
+        listingRepository.findAll().forEach(listing -> listingDtos.add(listingMapper.mapEntityToListing(listing)));
+        return listingDtos;
     }
 
     public Long deleteListingById(Long id) {

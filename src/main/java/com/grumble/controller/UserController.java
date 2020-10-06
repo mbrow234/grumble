@@ -42,7 +42,7 @@ public class UserController {
 
         List<UserDto> userDtos = userService.getAllUsers();
         if (CollectionUtils.isEmpty(userDtos)) {
-            log.error("Failed to get all users or there were none.");
+            log.warn("Failed to get all users or there were none.");
             return new ResponseEntity<>(userDtos, HttpStatus.GONE);
         }
 
@@ -56,7 +56,7 @@ public class UserController {
         Long userId = userService.deleteUserById(id);
 
         if (null == userId) {
-            log.error("Unable to delete user by id: {}", id);
+            log.warn("Unable to delete user by id: {}", id);
             return new ResponseEntity<>(id, HttpStatus.NOT_FOUND);
         }
 
