@@ -1,29 +1,29 @@
-package com.grumble.model;
+package com.grumble.dto;
 
-import java.util.List;
-
-public class User {
+public class UserDto {
     private Long id;
     private String firstName;
     private String lastName;
     private String userSince;
-    private Address address;
-    private List<Listing> userListings;
+    private AddressDto addressDto;
 
-    public User() {
+    public UserDto() {
 
     }
 
-    public User(String firstName, String lastName, String userSince, Address address, List<Listing> userListings) {
+    public UserDto(String firstName, String lastName, String userSince, AddressDto addressDto) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userSince = userSince;
-        this.address = address;
-        this.userListings = userListings;
+        this.addressDto = addressDto;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -50,19 +50,11 @@ public class User {
         this.userSince = userSince;
     }
 
-    public Address getAddress() {
-        return address;
+    public AddressDto getAddressDto() {
+        return addressDto;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public List<Listing> getUserListings() {
-        return userListings;
-    }
-
-    public void setUserListings(List<Listing> userListings) {
-        this.userListings = userListings;
+    public void setAddressDto(AddressDto addressDto) {
+        this.addressDto = addressDto;
     }
 }
