@@ -1,14 +1,19 @@
 package com.grumble.controller;
 
+import com.grumble.service.VetService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
 public class VetController {
 
-    public VetController() {
+    private VetService vetService;
 
+    @Autowired
+    public VetController(VetService vetService) {
+        this.vetService = vetService;
     }
 
     //TODO: implement

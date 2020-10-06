@@ -1,14 +1,19 @@
 package com.grumble.controller;
 
+import com.grumble.service.PetWatchingService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
 public class PetWatchingController {
 
-    public PetWatchingController() {
+    private PetWatchingService petWatchingService;
 
+    @Autowired
+    public PetWatchingController(PetWatchingService petWatchingService) {
+        this.petWatchingService = petWatchingService;
     }
 
     //TODO: implement
