@@ -23,6 +23,9 @@ public class Pet {
     @Enumerated(EnumType.STRING)
     private AnimalType animalType;
 
+    @Column(name = "description")
+    private String description;
+
     public Long getId() {
         return id;
     }
@@ -53,5 +56,13 @@ public class Pet {
 
     public void setAnimalType(AnimalType animalType) {
         this.animalType = animalType;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

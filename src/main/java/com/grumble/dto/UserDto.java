@@ -6,16 +6,18 @@ public class UserDto {
     private String lastName;
     private String userSince;
     private AddressDto addressDto;
+    private String email;
 
     public UserDto() {
 
     }
 
-    public UserDto(String firstName, String lastName, String userSince, AddressDto addressDto) {
+    public UserDto(String firstName, String lastName, String userSince, AddressDto addressDto, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userSince = userSince;
         this.addressDto = addressDto;
+        this.email = email;
     }
 
     public Long getId() {
@@ -56,5 +58,13 @@ public class UserDto {
 
     public void setAddressDto(AddressDto addressDto) {
         this.addressDto = addressDto;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
