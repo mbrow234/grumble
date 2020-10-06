@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -34,6 +36,13 @@ public class UserServiceImpl implements UserService {
         }
 
         return userDto;
+    }
+
+    public List<UserDto> getAllUsers() {
+        List<UserDto> userDtos = new ArrayList<>();
+        userRepository.findAll().forEach(user -> userDtos.add(userMapper.mapEntityToUser(user)));
+
+        return userDtos;
     }
 
     public UserDto createUser(UserDto userDtoToSave) {
