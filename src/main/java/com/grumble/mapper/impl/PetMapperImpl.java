@@ -19,6 +19,8 @@ public class PetMapperImpl implements PetMapper {
         petDto.setAnimalType(petEntity.getAnimalType());
         petDto.setPetName(petEntity.getPetName());
         petDto.setBirthDay(petEntity.getBirthDay());
+        petDto.setDescription(petEntity.getDescription());
+        petDto.setUserId(petEntity.getUserId());
 
         return petDto;
     }
@@ -30,6 +32,8 @@ public class PetMapperImpl implements PetMapper {
         petEntity.setAnimalType(petDto.getAnimalType());
         petEntity.setBirthDay(petDto.getBirthDay());
         petEntity.setPetName(petDto.getPetName());
+        petEntity.setDescription(petDto.getDescription());
+        petEntity.setUserId(petDto.getUserId());
 
         return petEntity;
     }

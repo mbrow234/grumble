@@ -90,4 +90,18 @@ public class UserController {
 
         return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
+
+    @GetMapping("user/email/{email}")
+    public ResponseEntity<UserDto> getUserByEmail(@PathVariable String email) {
+        log.info("REST Resource called - getUserByEmail: {}", email);
+
+        UserDto userDto = userService.getUserByEmail(email);
+
+        if (null == userDto) {
+            log.warn("Unable to find user by email: {}", email);
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(userDto, HttpStatus.OK);
+    }
 }

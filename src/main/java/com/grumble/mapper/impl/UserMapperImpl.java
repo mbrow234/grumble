@@ -24,6 +24,8 @@ public class UserMapperImpl implements UserMapper {
         userDto.setLastName(userEntity.getLastName());
         userDto.setAddressDto(addressMapper.mapEntityToAddress(userEntity.getAddress()));
         userDto.setUserSince(userEntity.getUserSince());
+        userDto.setEmail(userEntity.getEmail());
+        userDto.setPhone(userEntity.getPhone());
 
         return userDto;
     }
@@ -36,6 +38,8 @@ public class UserMapperImpl implements UserMapper {
         userEntity.setLastName(userDto.getLastName());
         userEntity.setUserSince(userDto.getUserSince());
         userEntity.setAddress(addressMapper.mapAddressToEntity(userDto.getAddressDto()));
+        userEntity.setEmail(userDto.getEmail());
+        userEntity.setPhone(userDto.getPhone());
 
         return userEntity;
     }

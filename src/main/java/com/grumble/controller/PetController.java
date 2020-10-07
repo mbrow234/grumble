@@ -85,4 +85,18 @@ public class PetController {
         return new ResponseEntity<>(updatedPetDto, HttpStatus.OK);
     }
 
+    @GetMapping("pet/user/{userId}")
+    public ResponseEntity<List<PetDto>> getPetsByUserId(@PathVariable Long userId) {
+        log.info("REST Resource called - getPetsByUserId: {}", userId);
+
+        List<PetDto> petDtos = petService.getPetsByUserId(userId);
+
+        if (CollectionUtils.isEmpty(petDtos)) {
+            log.warn("Unalbe to to find pets by userId: {}", userId);
+            return new ResponseEntity<>(petDtos, HttpStatus.GONE);
+        }
+
+        return new ResponseEntity<>(petDtos, HttpStatus.OK);
+    }
+
 }

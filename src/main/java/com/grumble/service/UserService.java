@@ -10,4 +10,5 @@ public interface UserService {
     UserDto createUser(UserDto userDtoToSave);
     Long deleteUserById(Long id);
     UserDto updateUser(UserDto userDtoUpdated);
+    UserDto getUserByEmail(String email);
 }

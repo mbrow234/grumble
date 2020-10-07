@@ -8,15 +8,14 @@ import com.grumble.service.PetService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Slf4j
 @Service
-@Transactional
 public class PetServiceImpl implements PetService {
 
     private PetRepository petRepository;
@@ -44,6 +43,21 @@ public class PetServiceImpl implements PetService {
         List<PetDto> petDtos = new ArrayList<>();
 
         petRepository.findAll().forEach(pet -> petDtos.add(petMapper.mapEntityToPet(pet)));
+
+        return petDtos;
+    }
+
+    @Override
+    public List<PetDto> getPetsByUserId(Long userId) {
+        List<Pet> pets = petRepository.getPetsByUserId(userId);
+
+        if (CollectionUtils.isEmpty(pets)) {
+            return null;
+        }
+
+        List<PetDto> petDtos = new ArrayList<>();
+
+        pets.forEach(pet -> petDtos.add(petMapper.mapEntityToPet(pet)));
 
         return petDtos;
     }
@@ -87,4 +101,6 @@ public class PetServiceImpl implements PetService {
 
         return updatedPetDto;
     }
+
+
 }
