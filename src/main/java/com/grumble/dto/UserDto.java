@@ -7,17 +7,19 @@ public class UserDto {
     private String userSince;
     private AddressDto addressDto;
     private String email;
+    private String phone;
 
     public UserDto() {
 
     }
 
-    public UserDto(String firstName, String lastName, String userSince, AddressDto addressDto, String email) {
+    public UserDto(String firstName, String lastName, String userSince, AddressDto addressDto, String email, String phone) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userSince = userSince;
         this.addressDto = addressDto;
         this.email = email;
+        this.phone = phone;
     }
 
     public Long getId() {
@@ -66,5 +68,13 @@ public class UserDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

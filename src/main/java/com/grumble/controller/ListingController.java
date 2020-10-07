@@ -78,4 +78,6 @@ public class ListingController {
 
     //TODO: implemnt PUT
 
+    //TODO get all listings
+
 }

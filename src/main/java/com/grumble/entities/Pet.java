@@ -26,6 +26,9 @@ public class Pet {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "user_id")
+    private Long userId;
+
     public Long getId() {
         return id;
     }
@@ -64,5 +67,13 @@ public class Pet {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

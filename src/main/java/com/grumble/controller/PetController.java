@@ -85,4 +85,6 @@ public class PetController {
         return new ResponseEntity<>(updatedPetDto, HttpStatus.OK);
     }
 
+    //TODO: get pets by user id or email
+
 }

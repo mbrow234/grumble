@@ -8,15 +8,12 @@ import com.grumble.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Slf4j
 @Service
-@Transactional
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
@@ -74,4 +71,16 @@ public class UserServiceImpl implements UserService {
         return userDto;
     }
 
+    public UserDto getUserByEmail(String email) {
+        Optional<User> userOptional = userRepository.getUserByEmail(email);
+
+        UserDto user;
+        if (userOptional.isPresent()) {
+            user = userMapper.mapEntityToUser(userOptional.get());
+        } else {
+            return null;
+        }
+
+        return user;
+    }
 }

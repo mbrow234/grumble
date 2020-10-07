@@ -5,6 +5,7 @@ import com.grumble.common.AnimalType;
 public class PetDto {
 
     private Long id;
+    private Long userId;
     private String petName;
     private String birthDay;
     private AnimalType animalType;
@@ -48,5 +49,13 @@ public class PetDto {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }
